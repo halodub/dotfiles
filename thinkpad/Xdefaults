@@ -1,0 +1,6 @@
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/0000
+urxvt*scrollBar: false
+urxvt*externalBorder: 0
+urxvt*internalBorder: 0
+urxvt*font: xft:Less Perfect DOS VGA:size=9
