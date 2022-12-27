@@ -1,53 +1,27 @@
+" sets line numbers with relative line numbers (shows current line's number,and how far away other lines are)
 :set number
 :set relativenumber
+" enables mouse mode
 :set mouse=a
+" tries to align tabs on the same lines
 :set smarttab
+" sets horizontal splits to always go below the current window; also could use :bel
 :set splitbelow
+" lets you do naughty stuff
 :set nocompatible
-:syntax enable
-:filetype plugin on
-
-
-
-call plug#begin()
-	Plug 'https://github.com/vim-airline/vim-airline'
-	Plug 'https://github.com/preservim/nerdtree'
-	Plug 'https://github.com/preservim/tagbar'
-	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-	Plug 'lervag/vimtex'
-	Plug 'Konfekt/FastFold'
-	Plug 'matze/vim-tex-fold'
-
-call plug#end()
-
-nmap <F2> :NERDTreeToggle<CR>
-nmap <F3> :TagbarToggle<CR>
-nmap <F4> :sp term://bash
-
-let g:tex_flavor  = 'latex'
-let g:tex_conceal = ''
-let g:vimtex_fold_manual = 1
-let g:vimtex_latexmk_continuous = 1
-let g:vimtex_compiler_progname = 'nvr'
-
-augroup NCM2
-  autocmd!
-  " some other settings...
-  " uncomment this block if you use vimtex for LaTex
-  autocmd Filetype tex call ncm2#register_source({
-            \ 'name': 'vimtex',
-            \ 'priority': 8,
-            \ 'scope': ['tex'],
-            \ 'mark': 'tex',
-            \ 'word_pattern': '\w+',
-            \ 'complete_pattern': g:vimtex#re#ncm2,
-            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-            \ })
-augroup END
-
-" file finding
-:set path+=**
-" autocomplete
+" fuzzy finder thingie from weird vim guy video
+:set path +=**
+" enables autocomplete
 :set wildmenu
-" ctags
-" :command! MakeTags !ctags -R .
+" supposedly turns off word wrap
+:set nowrap
+" turns on coloring for different syntaxes vim understands
+:syntax enable
+
+" vertical splits a file explorer in the current dir
+nmap <F2> :vsp <CR>:e .<CR>
+" horizontal splits a terminal that is 30 lines tall
+nmap <F3> :sp <CR>:resize 30<CR>:term<CR>
+
+" remaps the escape sequence to exit terminal mode to Esc instead of Ctrl \ + Ctrl N
+:tnoremap <Esc> <C-\><C-n>
