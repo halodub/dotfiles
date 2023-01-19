@@ -1,0 +1,1 @@
+urxvt -bl -geometry 220x86-0+0 -e sh -c "sleep 3;wmctrl -r sh -b add,skip_taskbar;wmctrl -r sh -t -1; ./bg.sh; htop"
